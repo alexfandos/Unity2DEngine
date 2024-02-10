@@ -231,76 +231,6 @@ MonoBehaviour:
   Protagonist: {fileID: 1833635802}
   OtherTarget: {fileID: 0}
   Mode: 1
---- !u!1 &103088308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 103088310}
-  - component: {fileID: 103088309}
-  - component: {fileID: 103088311}
-  m_Layer: 0
-  m_Name: test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &103088309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103088308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2867fa87c65e4504b8d7f93dd7061f70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  json: "{\r\n    \"if\" : \r\n    [\r\n       \"test.condition.1;>;4\",\r\n      
-    \"test.condition.2;=;true\"\r\n    ],\r\n    \"then\":\r\n    [\r\n        {\r\n           
-    \"move\": \r\n            {\r\n                \"object\": \"NPC\",\r\n               
-    \"speed\": 0.3,\r\n                \"steps\":\r\n                [\r\n                   
-    \"left\",\r\n                    \"left\",\r\n                    \"left\"\r\n               
-    ]\r\n            }\r\n        },\r\n        {\r\n            \"dialog\":\r\n           
-    {\r\n                \"lines\":\r\n                [\r\n                    {\r\n                       
-    \"id\":0,\r\n                        \"text\": \"hey!\"\r\n                   
-    },\r\n                    {\r\n                        \"id\":1,\r\n                       
-    \"text\": \"fuck of!\"\r\n                    }\r\n                ]\r\n           
-    }\r\n        },\r\n        {\r\n            \"operation\":\r\n            [\r\n               
-    \"1.NPC.times;+;1\"\r\n            ]\r\n        }\r\n    ]\r\n}"
---- !u!4 &103088310
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103088308}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.86546856, y: 2.9541712, z: 0.026867108}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &103088311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103088308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6297f10e2d192940962bfdd7fd24e8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Executed: 0
 --- !u!1 &328982925
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +244,7 @@ GameObject:
   - component: {fileID: 328982927}
   - component: {fileID: 328982926}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,6 +364,7 @@ Transform:
   m_Children:
   - {fileID: 1357825372}
   - {fileID: 720126413}
+  - {fileID: 1075756093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715430523
@@ -771,12 +702,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075756091}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.805095, y: 3.053549, z: 0.027310789}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.299114, y: -0.38593936, z: -0.025913365}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 357520747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1099048333
 GameObject:
@@ -791,7 +722,7 @@ GameObject:
   - component: {fileID: 1099048335}
   - component: {fileID: 1099048334}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1559,20 +1490,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0009daa842466854b8a3d31c865a9b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: eead43006c280ae448194cc418dbfc29, type: 2}
-  - {fileID: 11400000, guid: 2ae97ddd886ce6d42a6aec20b20a8d4d, type: 2}
-  - {fileID: 11400000, guid: de263cb2f0427af45aa51d294f7ad3df, type: 2}
-  - {fileID: 11400000, guid: 18126899961dce242aad6342108fbe07, type: 2}
-  - {fileID: 11400000, guid: b9d6f0952f254244b84aa156a5361a6b, type: 2}
-  - {fileID: 11400000, guid: 394ec5520a7d0994f90f10fbfb80c164, type: 2}
-  - {fileID: 11400000, guid: 6882dd840c5887040b02a40310754d0a, type: 2}
-  - {fileID: 11400000, guid: ed48ede4e5b534a49bbd71fe1b9e441c, type: 2}
-  - {fileID: 11400000, guid: 3e8fa2e7de34a2c4896656a2b9987463, type: 2}
-  - {fileID: 11400000, guid: e5bf049ab0f0e9442a216d455bfec7e6, type: 2}
-  - {fileID: 11400000, guid: fd1ff49583a588c4f82465fe90b7473c, type: 2}
-  - {fileID: 11400000, guid: 96a84fbc4902bf441b6f12d8f4ce8178, type: 2}
-  - {fileID: 11400000, guid: 23906fa6dac319740889863ae9038bea, type: 2}
+  actionsJson: "[\n\t{\n\t\t\"Type\":\"Teleport\",\n\t\t\"Args\":\n\t\t{\t\"Teleports\":\n\t\t\t[\n\t\t\t\t{\n\t\t\t\t\t\"Subject\":\"NPC\",\n\t\t\t\t\t\"X\":
+    0,\n\t\t\t\t\t\"Y\": 0\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"Subject\":\"Player\",\n\t\t\t\t\t\"X\":
+    1,\n\t\t\t\t\t\"Y\": 0\n\t\t\t\t},\n\t\t\t]\n\t\t}\n\t},\n\t{\n\t\t\"Type\":\"Camera\",\n\t\t\"Args\":\n\t\t{\t\n\t\t\t\"Action\":\"Shake\",\n\t\t\t\"Shake\":\n\t\t\t{\n\t\t\t\t\"Force\":1,\n\t\t\t\t\"Frequency\":
+    50,\n\t\t\t\t\"Duration\": 2\n\t\t\t}\n\n\t\t}\t\t\n\t},\n\t{\n\t\t\"Type\":\"Camera\",\n\t\t\"Args\":\n\t\t{\t\n\t\t\t\"Action\":\"Follow_target\",\n\t\t\t\"Target\":
+    \"NPC\"\n\t\t}\t\t\n\t},\n\t{\n\t\t\"Type\":\"Move\",\n\t\t\"Args\":\n\t\t{\t\n\t\t\t\"Movements\":\n\t\t\t[\t\n\t\t\t\t{\n\t\t\t\t\t\"Subject\":\"NPC\",\n\t\t\t\t\t\"Speed\":
+    3,\n\t\t\t\t\t\"Steps\":\n\t\t\t\t\t[\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"left\",\n\t\t\t\t\t\t\t\"speed\": 0.5\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"left\",\n\t\t\t\t\t\t\t\"speed\": 1\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"left\",\n\t\t\t\t\t\t\t\"speed\": 1.5\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"left\",\n\t\t\t\t\t\t\t\"speed\": 2\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"left\",\n\t\t\t\t\t\t\t\"speed\": 2.5\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"left\",\n\t\t\t\t\t\t\t\"speed\": 3\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"left\",\n\t\t\t\t\t\t\t\"speed\": 1\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"none\",\n\t\t\t\t\t\t\t\"speed\": 1\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"down\",\n\t\t\t\t\t\t\t\"speed\": 1\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"none\",\n\t\t\t\t\t\t\t\"speed\": 1\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"right\",\n\t\t\t\t\t\t\t\"speed\": 1\n\t\t\t\t\t\t},\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\"direction\":
+    \"right\",\n\t\t\t\t\t\t\t\"speed\": 1\n\t\t\t\t\t\t},\n\t\t\t\t\t]\n\t\t\t\t}\n\t\t\t]\n\t\t}\t\t\n\t},\n]"
+  randomMovement: {fileID: 0}
   lookAtTriggerSource: 1
 --- !u!114 &1696187540
 MonoBehaviour:
@@ -2053,5 +1989,3 @@ SceneRoots:
   - {fileID: 1099048337}
   - {fileID: 715430526}
   - {fileID: 357520747}
-  - {fileID: 103088310}
-  - {fileID: 1075756093}

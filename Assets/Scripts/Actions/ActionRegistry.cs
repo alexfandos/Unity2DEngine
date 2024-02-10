@@ -7,9 +7,17 @@ using System.Reflection;
 public class ActionRegistry : MonoBehaviour
 {
     private Dictionary<string, Type> actionTypeMap;
+    public static ActionRegistry Instance;
 
     void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+
         actionTypeMap = new Dictionary<string, Type>();
 
         // Get all types that are subclass of Action and have a non-abstract implementation
@@ -34,14 +42,9 @@ public class ActionRegistry : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        GetActionType("move");
-    }
-
     public Type GetActionType(string commandName)
     {
-        if (actionTypeMap.TryGetValue(commandName, out Type actionType))
+        if (actionTypeMap.TryGetValue(commandName.ToLower(), out Type actionType))
         {
             return actionType;
         }

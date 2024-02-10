@@ -27,81 +27,21 @@ public class ConditionArgs
 
 public class ActionParser
 {
-    public static void Execute()
-    {
-        string json = @"
-        [
-            {   
-                ""type"": ""condition"",
-                ""args"": { 
-                    ""if"": [
-                        [""test.condition.1;>;4""],
-                        [
-                            ""test.condition.2;=;true"",
-                            ""test.condition.3;=;true"",
-                        ]
-                    ],
-                    ""then"": [
-                        {
-                            ""type"": ""move"",
-                            ""args"": {   
-                                ""movements"": [
-                                    {
-                                        ""subject"": ""NPC"",
-                                        ""speed"": 5,
-                                        ""steps"": [
-                                            { ""direction"":""left"" },
-                                            { ""direction"":""left"", ""speed"": 1 },
-                                            { ""direction"":""left"" }
-                                        ]
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            ""type"": ""dialog"",
-                            ""args"": {
-                                ""messages"": [
-                                    { ""id"":0, ""text"": ""hey!"" },
-                                    { ""id"":1, ""text"": ""back off!"" }
-                                ],
-                                ""characters"": [
-                                    {
-                                        ""name"": ""Protagonist"",
-                                        ""face"": ""art/char/protagonist/face""
-                                    },
-                                    {
-                                        ""name"": ""NPC"",
-                                        ""face"": ""art/char/npc1/face""
-                                    }
-                                ]
-                            }
-                        }
-                    ],
-                    ""else"": [
-                        {
-                            ""type"": ""operation"",
-                            ""args"": {
-                                ""operations"": [""1.NPC.times"", ""+"", ""1""],
-                            }
-                        }
-                    ]
-                }
-            }
-        ]";
 
+    public static List<ActionItem> Deserialize(string json)
+    {
         var settings = new JsonSerializerSettings
         {
             MissingMemberHandling = MissingMemberHandling.Error
         };
+
         var actionItems = JsonConvert.DeserializeObject<List<ActionItem>>(json, settings);
 
         foreach (var actionItem in actionItems)
         {
             DeserializeActionItem(actionItem);
         }
-
-        Debug.Log(actionItems);
+        return actionItems;
     }
 
     private static void DeserializeActionItem(ActionItem actionItem)
@@ -111,7 +51,7 @@ public class ActionParser
             MissingMemberHandling = MissingMemberHandling.Error
         };
 
-        switch (actionItem.Type)
+        switch (actionItem.Type.ToLower())
         {
             case "condition":
                 var conditionArgs = JsonConvert.DeserializeObject<ConditionArgs>(actionItem.Args.ToString(), settings);
@@ -168,34 +108,6 @@ public class JsonParserTest : MonoBehaviour
     public string json;
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        ActionParser.Execute();
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-
-            DialogArgs dialogArgs = new DialogArgs();
-
-            dialogArgs.Characters = new List<Character>();
-            dialogArgs.Messages = new List<Message>();
-
-            dialogArgs.Characters.Add(new Character { Name = "Protagonist", Face = "art/char/protagonist/face" });
-            dialogArgs.Characters.Add(new Character { Name = "NPC", Face = "art/char/npc1/face" });
-
-            dialogArgs.Messages.Add(new Message { Id = 0, Text = "Hola!" });
-            dialogArgs.Messages.Add(new Message { Id = 1, Text = "Ey!" });
-
-            GameObject gameObject = new GameObject("New GameObject");
-
-            // Add ExampleMonoBehaviour to this new GameObject
-            Dialog1 example = gameObject.AddComponent<Dialog1>();
-
-            example.Execute(dialogArgs);
-        }
 
     }
 }

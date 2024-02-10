@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MyBox;
 using Newtonsoft.Json;
 
 [System.Serializable]
@@ -38,8 +37,9 @@ public class ShakeArgs
             _force = value;
         }
     }
-    [JsonProperty(Required = Required.Always)]
+    
     private float _frequency;
+    [JsonProperty(Required = Required.Always)]
     public float Frequency
     {
         get => _frequency;
@@ -107,10 +107,10 @@ public class CameraControlAction1 : GameAction1
         IsComplete = false;
         GameObject target;
         Vector2 targetPosition;
-        if (cameraArguments.Speed == null)
-            cameraArguments.Speed = 3;
+        if (cameraArguments.Speed == 0f)
+            cameraArguments.Speed = 3f;
 
-        CameraAction action = CameraActionTranslation[cameraArguments.Action];
+        CameraAction action = CameraActionTranslation[cameraArguments.Action.ToLower()];
 
         switch (action)
         {
